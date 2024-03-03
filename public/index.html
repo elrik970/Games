@@ -156,12 +156,16 @@
             glow.style.top = y+'px';
         }
 
-        window.onload = e => {
-            getClicks("grapplyBird","grapplyBirdCount");
-            getClicks("gunSlap","gunSlapCount");
-            getClicks("grapplingHook","grapplingHookCount");
-            getClicks("snakeFlyer","snakeFlyerCount");
-            getClicks("demonPark","demonParkCount");
+        window.onload = async e => {
+            await getClicks("grapplyBird","grapplyBirdCount");
+
+            await getClicks("gunSlap","gunSlapCount");
+
+            await getClicks("grapplingHook","grapplingHookCount");
+
+            await getClicks("snakeFlyer","snakeFlyerCount");
+
+            await getClicks("demonPark","demonParkCount");
         }
 
         async function getClicks(name,id) {
@@ -177,10 +181,13 @@
 
             const resData = await data.json();
 
-            console.log(resData);
+            console.log("resData: " +resData);
 
-            if (resData) {
-                document.getElementById(id).textContent = resData['clicks'] + " clicks";
+            console.log(resData['views']);
+
+            if (resData != null) {
+                console.log(resData['views']);
+                document.getElementById(id).textContent = resData['views'] + " views";
             }
             
 
@@ -199,7 +206,7 @@
             const resData = await data.json();
 
             console.log(resData);
-            document.getElementById(id).textContent = resData['clicks'] + " clicks";
+            document.getElementById(id).textContent = resData['views'] + " views";
 
         };
 
@@ -272,7 +279,7 @@
 
         <tr>
             <td>
-                <a href = "https://elrik970.github.io/SnakeFlyer0.1" target = "_blank">
+                <a href = "https://elrik970.github.io/SnakeFlyer" target = "_blank">
                     <img src="images/SnakeFlyer.png" alt="Snake Flyer" class = "snakeFlyer gameImage" onclick="addClick('snakeFlyer','snakeFlyerCount')">
                 </a>
             </td>
